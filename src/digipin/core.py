@@ -1,12 +1,13 @@
 import math
-from typing import List, Tuple, Dict
-from .model import Coordinates, DigipinBounds
+from typing import Dict, List, Tuple
+
 from .error import (
+    InvalidDigipinCharError,
+    InvalidDigipinError,
     LatitudeOutOfRangeError,
     LongitudeOutOfRangeError,
-    InvalidDigipinError,
-    InvalidDigipinCharError,
 )
+from .model import Coordinates, DigipinBounds
 
 # The DIGIPIN grid as defined in the JavaScript code
 DIGIPIN_GRID: List[List[str]] = [
@@ -17,9 +18,7 @@ DIGIPIN_GRID: List[List[str]] = [
 ]
 
 # The geographical bounds as defined in the JavaScript code
-BOUNDS: DigipinBounds = DigipinBounds(
-    min_lat=2.5, max_lat=38.5, min_lon=63.5, max_lon=99.5
-)
+BOUNDS: DigipinBounds = DigipinBounds(min_lat=2.5, max_lat=38.5, min_lon=63.5, max_lon=99.5)
 
 
 class Digipin(object):
@@ -30,7 +29,7 @@ class Digipin(object):
 
     def __init__(self):
         """
-        Initializes the DigipinEncoderDecoder.
+        Initializes the Digipin.
         The grid and bounds are fixed constants for this implementation.
         """
         self.digipin_grid = DIGIPIN_GRID
@@ -59,11 +58,11 @@ class Digipin(object):
         """
         if not (self.bounds.min_lat <= lat <= self.bounds.max_lat):
             raise LatitudeOutOfRangeError(
-                f"Latitude {lat} out of range [{self.bounds.min_lat}, {self.bounds.max_lat}]"
+                f"Latitude {lat} out of range " f"[{self.bounds.min_lat}, {self.bounds.max_lat}]"
             )
         if not (self.bounds.min_lon <= lon <= self.bounds.max_lon):
             raise LongitudeOutOfRangeError(
-                f"Longitude {lon} out of range [{self.bounds.min_lon}, {self.bounds.max_lon}]"
+                f"Longitude {lon} out of range" f"[{self.bounds.min_lon}, {self.bounds.max_lon}]"
             )
 
         current_min_lat = self.bounds.min_lat
@@ -137,9 +136,7 @@ class Digipin(object):
 
         for char in pin_cleaned:
             if char not in self._grid_reverse_lookup:
-                raise InvalidDigipinCharError(
-                    f"Invalid character '{char}' found in DIGIPIN."
-                )
+                raise InvalidDigipinCharError(f"Invalid character '{char}' found in DIGIPIN.")
 
             row_idx, col_idx = self._grid_reverse_lookup[char]
 
@@ -169,6 +166,4 @@ class Digipin(object):
         center_lon = (current_min_lon + current_max_lon) / 2
 
         # Round to 6 decimal places as in the JavaScript example
-        return Coordinates(
-            latitude=round(center_lat, 6), longitude=round(center_lon, 6)
-        )
+        return Coordinates(latitude=round(center_lat, 6), longitude=round(center_lon, 6))
