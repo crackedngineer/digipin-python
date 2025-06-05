@@ -2,7 +2,7 @@ from app.routes.v1.routes import router as v1_routers
 from fastapi import FastAPI
 
 app = FastAPI(
-    title="DIGIPIN API",
+    title="Digipin Pro API",
     version="1.0.0",
     description="API for encoding/decoding DIGIPINs using the digipin-python library.",
 )
