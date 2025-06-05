@@ -61,3 +61,6 @@ jobs:
                   echo "Built and pushed images:"
                   echo "Dockerfile: ${{ steps.docker-config.outputs.dockerfile }}"
                   echo "Tags: ${{ steps.docker-config.outputs.tags }}"
+
+            - name: Trigger Render Deployment
+              run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
