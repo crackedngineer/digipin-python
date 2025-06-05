@@ -43,13 +43,13 @@ jobs:
             - name: Set Dockerfile and tags based on branch
               id: docker-config
               run: |
-                  echo "dockerfile=Dockerfile" >> $GITHUB_OUTPUT
+                  echo "dockerfile=./api/Dockerfile" >> $GITHUB_OUTPUT
                   echo "tags=${{ env.REGISTRY }}/${{env.DOCKERHUB_USERNAME}}/${{ env.IMAGE_NAME }}:latest,${{ env.REGISTRY }}/${{env.DOCKERHUB_USERNAME}}/${{ env.IMAGE_NAME }}:${{ steps.timestamp.outputs.timestamp }}" >> $GITHUB_OUTPUT
 
             - name: Build and push Docker image
               uses: docker/build-push-action@v6
               with:
-                  context: .
+                  context: ./api
                   file: ${{ steps.docker-config.outputs.dockerfile }}
                   push: true
                   tags: ${{ steps.docker-config.outputs.tags }}
