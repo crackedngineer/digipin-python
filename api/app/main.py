@@ -1,8 +1,12 @@
 from app.routes.v1.routes import router as v1_routers
 from fastapi import FastAPI
 
-app = FastAPI()
-app.include_router(v1_routers, prefix="/v1")
+app = FastAPI(
+    title="DIGIPIN API",
+    version="1.0.0",
+    description="API for encoding/decoding DIGIPINs using the digipin-python library.",
+)
+app.include_router(v1_routers, prefix="/api/v1")
 
 
 @app.get("/", include_in_schema=False)
