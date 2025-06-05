@@ -63,6 +63,18 @@ files = [
 ]
 
 [[package]]
+name = "digipin-python"
+version = "0.1.3"
+description = ""
+optional = false
+python-versions = "<4.0,>=3.9"
+groups = ["main"]
+files = [
+    {file = "digipin_python-0.1.3-py3-none-any.whl", hash = "sha256:d92f8308cbf2ed4e5d0e388eb36aedc939e627276a7eaa3313393965a363c97f"},
+    {file = "digipin_python-0.1.3.tar.gz", hash = "sha256:32437529562f13494e712f8c4bbeb7ced5f2d8205a832e9a2309109ff75854a6"},
+]
+
+[[package]]
 name = "fastapi"
 version = "0.115.12"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
@@ -679,5 +691,5 @@ files = [
 
 [metadata]
 lock-version = "2.1"
-python-versions = ">=3.11"
-content-hash = "c6aa8930df0db9fe40d7cb242b0abf9809570b725634b83908ff4ca3c05cd058"
+python-versions = ">=3.11,<4.0"
+content-hash = "4316d9f41ba992402e37f956c6d27e72031620c8ac02b1714bd0aa68d4ec84dd"
