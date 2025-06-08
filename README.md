@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/crackedngineer/digipin-python">
-    <img src="./header-image.png" alt="digipin-python" />
+    <img src="https://github.com/crackedngineer/digipin-python/blob/master/header-image.png" alt="digipin-python" />
   </a>
 
   <p align="center">
