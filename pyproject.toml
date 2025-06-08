@@ -1,6 +1,6 @@
 [project]
 name = "digipin-python"
-version = "0.1.6"
+version = "0.1.7"
 description = "A Python library to encode geographic coordinates into DIGIPIN and decode DIGIPINs back to coordinates."
 authors = [
     { name = "Subhomoy Roy Choudhury", email = "subhomoyrchoudhury@gmail.com" },
