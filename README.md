@@ -91,4 +91,4 @@ If this project helps you discover amazing tools or saves your time, consider su
 
 ---
 
-Made in India with ❤️ by [Subhomoy Roy Choudhury](https://github.com/crackedngineer)
+Made in India with ❤️ by [crackedngineer](https://github.com/crackedngineer)
